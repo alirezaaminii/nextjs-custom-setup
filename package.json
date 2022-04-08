@@ -1,0 +1,132 @@
+{
+  "name": "media_planning_platform_frontend",
+  "version": "1.0.16",
+  "private": true,
+  "scripts": {
+    "postinstall": "husky install",
+    "dev": "next dev -p 8080",
+    "build": "next build",
+    "start": "cross-env node server.js",
+    "analyze": "cross-env ANALYZE=true next build",
+    "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
+    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
+    "type-check": "tsc --project tsconfig.json --pretty --noEmit",
+    "eslint-check": "eslint --print-config src/containers/app/index.js | eslint-config-prettier-check",
+    "lint": "eslint --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
+    "storybook": "start-storybook -p 6006 -s ./public",
+    "build-storybook": "build-storybook -s public",
+    "snapshot": "build-storybook && percy-storybook --widths=414,1920 --rtl --build_dir=storybook-static"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint ./src --ext .js,.jsx,.ts,.tsx --fix --quiet --cache"
+    ]
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "tabWidth": 2,
+    "singleQuote": true,
+    "useTabs": true,
+    "trailingComma": "all",
+    "printWidth": 120,
+    "semi": true
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@reduxjs/toolkit": "^1.7.1",
+    "@types/yup": "^0.29.13",
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-less": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
+    "antd": "^4.18.2",
+    "axios": "^0.24.0",
+    "babel-plugin-import": "^1.13.3",
+    "cross-env": "^7.0.3",
+    "formik": "^2.2.9",
+    "less": "^4.1.2",
+    "next": "12.0.7",
+    "next-i18next": "^10.1.0",
+    "next-redux-wrapper": "^7.0.5",
+    "nextjs-progressbar": "^0.0.13",
+    "node-sass": "^7.0.1",
+    "path": "^0.12.7",
+    "prettier": "^2.5.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-redux": "^7.2.6",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.1",
+    "sass": "^1.45.2",
+    "styled-components": "^5.3.3",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/plugin-proposal-private-methods": "^7.16.7",
+    "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
+    "@percy/storybook": "^4.1.0",
+    "@storybook/addon-actions": "^6.4.9",
+    "@storybook/addon-essentials": "^6.4.9",
+    "@storybook/addon-links": "^6.4.9",
+    "@storybook/node-logger": "^6.4.9",
+    "@storybook/preset-create-react-app": "^4.0.0",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/react": "^6.4.9",
+    "@types/node": "^17.0.8",
+    "@types/react": "^17.0.38",
+    "@types/react-redux": "^7.1.21",
+    "@types/styled-components": "^5.1.20",
+    "@typescript-eslint/eslint-plugin": "^5.9.0",
+    "@typescript-eslint/parser": "^5.9.0",
+    "babel-plugin-styled-components": "^2.0.2",
+    "eslint": "^8.6.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-react-app": "^7.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-react-redux": "^3.3.4",
+    "eslint-plugin-storybook": "^0.5.5",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.5",
+    "pretty-quick": "^3.1.3",
+    "react-docgen-typescript": "^2.2.2",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-logger": "^3.0.6",
+    "typescript": "^4.5.4"
+  },
+  "eslintConfig": {
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  }
+}

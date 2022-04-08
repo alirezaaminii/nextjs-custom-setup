@@ -1,0 +1,2 @@
+export const ERROR_ADD = 'ARMANI/ERROR/ADD';
+export const ERROR_REMOVE = 'ARMANI/ERROR/REMOVE';
